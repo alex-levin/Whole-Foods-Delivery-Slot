@@ -1,6 +1,6 @@
 import bs4
-
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 
 import sys
 import time
@@ -9,14 +9,15 @@ import winsound
 
 
 def getWFSlot(productUrl):
-   driver = webdriver.Chrome()
+   # driver = webdriver.Chrome()
+   driver = webdriver.Chrome(ChromeDriverManager().install())
    driver.get(productUrl)           
    html = driver.page_source
    soup = bs4.BeautifulSoup(html)
    time.sleep(60)
    no_open_slots = True
         
-   duration = 1000
+   duration = 10000
    freq = 440
 
    while no_open_slots:

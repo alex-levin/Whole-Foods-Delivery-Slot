@@ -1,4 +1,4 @@
-beautifulsoup4
-selenium
-urllib3
-webdriver-manager
+beautifulsoup4==4.9.0
+selenium==3.141.0
+urllib3==1.25.9
+webdriver-manager==2.3.0

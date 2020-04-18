@@ -13,7 +13,7 @@ def getWFSlot(productUrl):
    driver = webdriver.Chrome(ChromeDriverManager().install())
    driver.get(productUrl)           
    html = driver.page_source
-   soup = bs4.BeautifulSoup(html)
+   soup = bs4.BeautifulSoup(html, "html.parser")
    time.sleep(60)
    no_open_slots = True
         
@@ -24,7 +24,7 @@ def getWFSlot(productUrl):
       driver.refresh()
       print("refreshed")
       html = driver.page_source
-      soup = bs4.BeautifulSoup(html)
+      soup = bs4.BeautifulSoup(html, "html.parser")
       time.sleep(4)
 
       slot_pattern = 'Next available'

@@ -5,7 +5,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 import sys
 import time
 
-import winsound
+import os
 
 
 def getWFSlot(productUrl):
@@ -16,10 +16,7 @@ def getWFSlot(productUrl):
    soup = bs4.BeautifulSoup(html, "html.parser")
    time.sleep(60)
    no_open_slots = True
-        
-   duration = 10000
-   freq = 440
-
+   
    while no_open_slots:
       driver.refresh()
       print("refreshed")
@@ -32,7 +29,7 @@ def getWFSlot(productUrl):
          next_slot_text = soup.find('h4', class_ ='ufss-slotgroup-heading-text a-text-normal').text
          if slot_pattern in next_slot_text:
             print('SLOTS OPEN!')
-            winsound.Beep(freq, duration)
+            os.system('say "Slots for delivery opened!"')
             no_open_slots = False
             time.sleep(1400)
       except AttributeError:
